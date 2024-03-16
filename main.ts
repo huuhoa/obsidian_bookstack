@@ -187,6 +187,13 @@ class ObsidianBookstackSettingTab extends PluginSettingTab {
 				.setPlaceholder('enter bookstack server url')
 				.setValue(this.plugin.settings.bookstack_url)
 				.onChange(async (value) => {
+					if (value ===undefined || value === '') {
+						new Notice('Please enter a valid URL');
+						return;
+					}
+					if (!value.startsWith('http://') && !value.startsWith('https://')) {
+						value = 'https://' + value;
+					}
 					this.plugin.settings.bookstack_url = value;
 					await this.plugin.saveSettings();
 				}));
@@ -197,6 +204,10 @@ class ObsidianBookstackSettingTab extends PluginSettingTab {
 				.setPlaceholder('enter bookstack token id')
 				.setValue(this.plugin.settings.bookstack_token_id)
 				.onChange(async (value) => {
+					if (value ===undefined || value === '') {
+						new Notice('Please enter a valid token id');
+						return;
+					}
 					this.plugin.settings.bookstack_token_id = value;
 					await this.plugin.saveSettings();
 				}));
@@ -207,6 +218,10 @@ class ObsidianBookstackSettingTab extends PluginSettingTab {
 				.setPlaceholder('enter bookstack token secret')
 				.setValue(this.plugin.settings.bookstack_token_secret)
 				.onChange(async (value) => {
+					if (value ===undefined || value === '') {
+						new Notice('Please enter a valid token secret');
+						return;
+					}
 					this.plugin.settings.bookstack_token_secret = value;
 					await this.plugin.saveSettings();
 				}));
