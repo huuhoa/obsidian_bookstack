@@ -1,5 +1,5 @@
 OUTPUT_PACKAGE_NAME = obsidian-bookstack
-PACKAGE_VERSION = v1.0.0
+PACKAGE_VERSION = v$(shell node -p "require('./package.json').version")
 
 clean:
 	rm -rf dist
