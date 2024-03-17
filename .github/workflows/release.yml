@@ -17,11 +17,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Use Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: "18.x" # You might need to adjust this value to your own version
+          node-version: 20 # You might need to adjust this value to your own version
       - name: Build plugin
         id: build
         run: |
@@ -33,6 +33,8 @@ jobs:
           ls
           echo "::set-output name=tag_name::$(git tag --sort version:refname | tail -n 1)"
       - name: Create Release
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           tag="${{ github.ref_name }}"
           gh release create "$tag" \
