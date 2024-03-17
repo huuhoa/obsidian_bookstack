@@ -1,7 +1,7 @@
 {
 	"id": "obsidian-bookstack",
 	"name": "Obsidian Bookstack",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"minAppVersion": "0.15.0",
 	"description": "Publish your Obsidian notes to Bookstack",
 	"author": "NGUYEN Huu Hoa <hoa.nguyen@gotit.vn>",
